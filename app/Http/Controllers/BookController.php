@@ -8,16 +8,16 @@ class BookController extends Controller
 {
     private array $daftarBuku = [
         1 => [
-            'Judul' => 'Manusia Dan Langit Archives', 'Penulis' => 'Rogbi Adam'
+            'judul' => 'Manusia Dan Langit Archives', 'penulis' => 'Rogbi Adam', "harga" => 65000
         ],
         2 => [
-            'Judul' => 'Luka, Langit & Sebuah Mimpi', 'Penulis' => 'Rogbi Adam'
+            'judul' => 'Luka, Langit & Sebuah Mimpi', 'penulis' => 'Rogbi Adam', "harga" => 65000
         ],
         3 => [
-            'Judul' => '3726 MDPL', 'Penulis' => 'Nurwina Sari'
+            'judul' => '3726 MDPL', 'penulis' => 'Nurwina Sari', "harga" => 85000
         ],
         4 => [
-            'Judul' => '3726 MDPL', 'Penulis' => 'Nurwina Sari'
+            'judul' => 'Belajar PHP dari nol', 'penulis' => 'Adang Wihanda', "harga" => 75000
         ]
     ];
 
