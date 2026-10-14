@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $buku['judul'] ?? 'Detail Buku')
+@section('title', $buku->title ?? 'Detail Buku')
 
 @section('content')
 
@@ -14,26 +14,30 @@
                 <img src="{{ asset('images/sampul-placeholder.png') }}"
                      class="img-fluid mb-4"
                      style="max-width: 250px;"
-                     alt="Sampul {{ $buku['judul'] }}">
+                     alt="Sampul {{ $buku->title }}">
 
                 <h2 class="card-title">
-                    {{ $buku['judul'] }}
+                    {{ $buku->title }}
                 </h2>
 
                 <p class="card-text">
                     <strong>Penulis:</strong>
-                    {{ $buku['penulis'] }}
+                    {{ $buku->author_name }}
                 </p>
 
+                <p class="card-text">
+                    <strong>Kategori:</strong>
+                    {{ $buku->category->name }}
+                </p>
 
                 <p class="harga-buku fs-4">
-                    Rp{{ number_format($buku['harga'], 0, ',', '.') }}
+                    Rp{{ number_format($buku->price, 0, ',', '.') }}
                 </p>
 
                 <a href="{{ url('/buku') }}" class="btn btn-secondary">
                     Kembali ke Daftar Buku
                 </a>
-                
+
             </div>
         </div>
 
