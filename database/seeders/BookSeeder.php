@@ -23,37 +23,37 @@ class BookSeeder extends Seeder
 
         Book::create([
             'category_id' => $novel->id,
-            'title' => 'Dasar Laravel',
-            'author_name' => 'Budi Santoso',
-            'price' => 95000,
+            'title' => 'Luka, langit, dan sebuah mimpi',
+            'author_name' => 'Rogbi Adam',
+            'price' => 65000,
         ]);
 
         Book::create([
             'category_id' => $cerpen->id,
-            'title' => 'Pengantar Jaringan Komputer',
-            'author_name' => 'Citra Dewi',
-            'price' => 78000,
+            'title' => 'Filosofi Kopi',
+            'author_name' => 'Dewi Lestari',
+            'price' => 58000,
         ]);
 
         Book::create([
             'category_id' => $cerpen->id,
-            'title' => 'Praktik Jaringan Dasar',
-            'author_name' => 'Dewa Putra',
-            'price' => 88000,
+            'title' => 'Senyum Karyamin',
+            'author_name' => 'Ahmad Tohari',
+            'price' => 68000,
         ]);
 
         Book::create([
             'category_id' => $horor->id,
-            'title' => 'Dasar Basis Data',
-            'author_name' => 'Eka Saputra',
-            'price' => 82000,
+            'title' => 'Maddah',
+            'author_name' => 'Risa Saraswati',
+            'price' => 62000,
         ]);
 
         Book::create([
             'category_id' => $horor->id,
-            'title' => 'SQL untuk Pemula',
-            'author_name' => 'Fitri Lestari',
-            'price' => 90000,
+            'title' => 'Danur',
+            'author_name' => 'Risa Saraswati',
+            'price' => 60000,
         ]);
     }
 }
