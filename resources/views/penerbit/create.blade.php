@@ -51,5 +51,7 @@
             <a href="{{ route('penerbit.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
+
+    
 </body>
 </html>

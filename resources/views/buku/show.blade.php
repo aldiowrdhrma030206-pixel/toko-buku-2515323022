@@ -34,6 +34,14 @@
                     Rp{{ number_format($buku->price, 0, ',', '.') }}
                 </p>
 
+                
+                    @if ($buku->published_year)
+                        <p class="text-muted">
+                            Tahun terbit: {{ $buku->published_year }}
+                        </p>
+                    @endif
+
+
                 <a href="{{ url('/buku') }}" class="btn btn-secondary">
                     Kembali ke Daftar Buku
                 </a>

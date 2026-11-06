@@ -6,6 +6,10 @@
 
     <h1 class="mb-4">Daftar Buku</h1>
 
+    <a href="{{ route('buku.create') }}" class="btn btn-success mb-4">
+        + Tambah Buku
+    </a>
+
     <div class="row">
         @foreach ($daftarBuku as $buku)
 
@@ -36,9 +40,15 @@
                             Rp{{ number_format($buku->price, 0, ',', '.') }}
                         </p>
 
-                        <a href="{{ url('/buku/' . $buku->id) }}"
-                           class="btn btn-primary">
+                        <a
+                            href="{{ url('/buku/' . $buku->id) }}"
+                            class="btn btn-primary"
+                        >
                             Lihat Detail
+                        </a>
+
+                        <a href="{{ route('buku.edit', $buku->id) }}" class="btn btn-warning">
+                        Edit
                         </a>
 
                     </div>
