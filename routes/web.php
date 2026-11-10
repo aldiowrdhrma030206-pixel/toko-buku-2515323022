@@ -27,6 +27,9 @@ Route::put('/buku/{id}', [BookController::class, 'update'])
 Route::get('/buku/{id}', [BookController::class, 'show'])
     ->name('buku.show');
 
+Route::delete('/buku/{id}', [BookController::class, 'destroy'])
+    ->name('buku.destroy');
+
 // Route penerbit
 Route::resource('penerbit', PublisherController::class)
     ->except('show');

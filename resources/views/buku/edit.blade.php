@@ -2,30 +2,38 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    <h1>Edit Buku</h1>
+    <h1 class="mb-4">Edit Buku</h1>
 
     <form action="{{ route('buku.update', $buku->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="mb-3">
-            <label class="form-label">Judul Buku</label>
-            <input type="text" name="title" class="form-control"
+            <label for="title" class="form-label">Judul Buku</label>
+            <input type="text" id="title" name="title"
+                class="form-control @error('title') is-invalid @enderror"
                 value="{{ old('title', $buku->title) }}">
-            @error('title') <div class="text-danger">{{ $message }}</div> @enderror
+            @error('title')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Penulis</label>
-            <input type="text" name="author_name" class="form-control"
+            <label for="author_name" class="form-label">Penulis</label>
+            <input type="text" id="author_name" name="author_name"
+                class="form-control @error('author_name') is-invalid @enderror"
                 value="{{ old('author_name', $buku->author_name) }}">
-            @error('author_name') <div class="text-danger">{{ $message }}</div> @enderror
+            @error('author_name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Kategori</label>
-            <select name="category_id" class="form-control">
+            <label for="category_id" class="form-label">Kategori</label>
+            <select id="category_id" name="category_id"
+                class="form-select @error('category_id') is-invalid @enderror">
                 <option value="">Pilih Kategori</option>
                 @foreach ($daftarKategori as $kategori)
                     <option value="{{ $kategori->id }}"
@@ -34,12 +42,15 @@
                     </option>
                 @endforeach
             </select>
-            @error('category_id') <div class="text-danger">{{ $message }}</div> @enderror
+            @error('category_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Penerbit</label>
-            <select name="publisher_id" class="form-control">
+            <label for="publisher_id" class="form-label">Penerbit</label>
+            <select id="publisher_id" name="publisher_id"
+                class="form-select @error('publisher_id') is-invalid @enderror">
                 <option value="">Pilih Penerbit</option>
                 @foreach ($daftarPenerbit as $penerbit)
                     <option value="{{ $penerbit->id }}"
@@ -48,31 +59,54 @@
                     </option>
                 @endforeach
             </select>
-            @error('publisher_id') <div class="text-danger">{{ $message }}</div> @enderror
+            @error('publisher_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Harga</label>
-            <input type="number" name="price" class="form-control"
+            <label for="price" class="form-label">Harga</label>
+            <input type="number" id="price" name="price"
+                class="form-control @error('price') is-invalid @enderror"
                 value="{{ old('price', $buku->price) }}">
-            @error('price') <div class="text-danger">{{ $message }}</div> @enderror
+            <small class="text-muted">Masukkan angka saja, tanpa titik atau koma.</small>
+            @error('price')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Tahun Terbit (opsional)</label>
-            <input type="text" name="published_year" class="form-control"
+            <label for="stock" class="form-label">Stok Buku</label>
+            <input type="number" id="stock" name="stock"
+                class="form-control @error('stock') is-invalid @enderror"
+                value="{{ old('stock', $buku->stock) }}" min="0">
+            @error('stock')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="published_year" class="form-label">Tahun Terbit (opsional)</label>
+            <input type="text" id="published_year" name="published_year"
+                class="form-control @error('published_year') is-invalid @enderror"
                 value="{{ old('published_year', $buku->published_year) }}">
-            @error('published_year') <div class="text-danger">{{ $message }}</div> @enderror
+            @error('published_year')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Cover Buku (opsional)</label>
-            <input type="file" name="cover" class="form-control">
-            @error('cover') <div class="text-danger">{{ $message }}</div> @enderror
+            <label for="cover" class="form-label">Cover Buku (opsional)</label>
+            <input type="file" id="cover" name="cover"
+                class="form-control @error('cover') is-invalid @enderror">
+            @error('cover')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         <a href="{{ route('buku.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
+
 @endsection
