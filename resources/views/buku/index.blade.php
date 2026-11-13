@@ -90,7 +90,7 @@
                         </h5>
 
                         <p class="card-text">
-                            Penulis: {{ $buku->author_name }}
+                            Penulis: {{ $buku->author?->name ?? $buku->author_name ?? '-' }}
                         </p>
 
                         <p class="card-text">

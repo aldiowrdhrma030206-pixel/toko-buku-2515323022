@@ -29,20 +29,28 @@
 
         <!-- Penulis -->
         <div class="mb-3">
-            <label for="author_name" class="form-label">Penulis</label>
+    <label for="author_id" class="form-label">Penulis</label>
 
-            <input
-                type="text"
-                id="author_name"
-                name="author_name"
-                class="form-control @error('author_name') is-invalid @enderror"
-                value="{{ old('author_name') }}"
-            >
+    <select name="author_id" id="author_id"
+        class="form-select @error('author_id') is-invalid @enderror">
 
-            @error('author_name')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <option value="">Pilih Penulis (Opsional)</option>
+
+        @foreach ($authors as $author)
+            <option value="{{ $author->id }}"
+                {{ old('author_id') == $author->id ? 'selected' : '' }}>
+                {{ $author->name }}
+            </option>
+        @endforeach
+
+    </select>
+
+    @error('author_id')
+        <div class="invalid-feedback">
+            {{ $message }}
         </div>
+    @enderror
+</div>
 
         <!-- Kategori -->
         <div class="mb-3">

@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title', $buku->title ?? 'Detail Buku')
@@ -7,23 +6,27 @@
 
     <h1 class="mb-4">Detail Buku</h1>
 
-    @if($buku)
+    @if ($buku)
 
         <div class="card mb-4">
             <div class="card-body">
 
-                <img src="{{ asset('images/sampul-placeholder.png') }}"
-                     class="img-fluid mb-4"
-                     style="max-width: 250px;"
-                     alt="Sampul {{ $buku->title }}">
+                <img src="{{ asset('images/sampul-placeholder.png') }}" class="img-fluid mb-4" style="max-width: 250px;"
+                    alt="Sampul {{ $buku->title }}">
 
                 <h2 class="card-title">
                     {{ $buku->title }}
                 </h2>
 
-                <p class="card-text">
+                <div class="mb-3">
                     <strong>Penulis:</strong>
-                    {{ $buku->author_name }}
+                    {{ $buku->author_name ?? '-' }}
+                </div>
+
+                <p class="card-text">
+                    <strong>Penulis Terdaftar:</strong>
+                    {{ $buku->author?->name ?? ($buku->author_name ?? '-') }}
+
                 </p>
 
                 <p class="card-text">
@@ -69,15 +72,12 @@
         <div class="row">
 
             @forelse ($bukuLain as $item)
-
                 <div class="col-md-3 mb-4">
 
                     <div class="card h-100">
 
-                        <img src="{{ asset('images/sampul-placeholder.png') }}"
-                             class="card-img-top"
-                             style="height: 200px; object-fit: cover;"
-                             alt="Sampul {{ $item->title }}">
+                        <img src="{{ asset('images/sampul-placeholder.png') }}" class="card-img-top"
+                            style="height: 200px; object-fit: cover;" alt="Sampul {{ $item->title }}">
 
                         <div class="card-body">
 
@@ -93,8 +93,7 @@
                                 Rp{{ number_format($item->price, 0, ',', '.') }}
                             </p>
 
-                            <a href="{{ route('buku.show', $item->id) }}"
-                               class="btn btn-primary btn-sm">
+                            <a href="{{ route('buku.show', $item->id) }}" class="btn btn-primary btn-sm">
                                 Lihat Detail
                             </a>
 
@@ -111,13 +110,10 @@
                         Belum ada buku lain dalam kategori ini.
                     </div>
                 </div>
-
             @endforelse
 
         </div>
-
     @else
-
         <div class="alert alert-danger">
             Buku tidak ditemukan.
         </div>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AuthorController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -30,6 +32,14 @@ Route::get('/buku/{id}', [BookController::class, 'show'])
 Route::delete('/buku/{id}', [BookController::class, 'destroy'])
     ->name('buku.destroy');
 
+Route::resource('kategori', CategoryController::class)
+    ->except('show');
+
 // Route penerbit
 Route::resource('penerbit', PublisherController::class)
     ->except('show');
+
+Route::resource('penulis', AuthorController::class)
+    ->except('show')
+    ->parameters(['penulis' => 'penulis']);
+
